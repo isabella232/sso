@@ -132,7 +132,7 @@ type Configuration struct {
 	ClientConfig        ClientConfig        `mapstructure:"client"`
 	SessionConfig       SessionConfig       `mapstructure:"session"`
 	UpstreamConfigs     UpstreamConfigs     `mapstructure:"upstream"`
-	MetricsConfig       MetricsConfig       `mapstructrue:"metrics"`
+	MetricsConfig       MetricsConfig       `mapstructure:"metrics"`
 	LoggingConfig       LoggingConfig       `mapstructure:"logging"`
 	RequestSignerConfig RequestSignerConfig `mapstructure:"requestsigner"`
 }
@@ -337,7 +337,6 @@ func (mc MetricsConfig) Validate() error {
 	if err := mc.StatsdConfig.Validate(); err != nil {
 		return fmt.Errorf("invalid metrics.statsd config: %w", err)
 	}
-
 	return nil
 }
 
@@ -354,7 +353,6 @@ func (sc StatsdConfig) Validate() error {
 	if sc.Port == 0 {
 		return errors.New("no statsd.port configured")
 	}
-
 	return nil
 }
 
